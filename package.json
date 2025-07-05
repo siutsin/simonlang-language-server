@@ -1,0 +1,52 @@
+{
+  "name": "simonlang-extension",
+  "version": "1.0.0",
+  "description": "A custom language extension for VSCode",
+  "type": "module",
+  "main": "client/extension.js",
+  "scripts": {
+    "install:all": "npm install && cd client && npm install && cd ../server && npm install",
+    "package": "vsce package",
+    "install:extension": "vsce package && code --install-extension simonlang-extension-1.0.0.vsix",
+    "test": "node --test test/**/*.js"
+  },
+  "keywords": [
+    "vscode",
+    "language-server",
+    "extension"
+  ],
+  "author": "Simon Li",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.90.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [
+      {
+        "id": "simonlang",
+        "aliases": [
+          "simonlang"
+        ],
+        "extensions": [
+          ".simon"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "simonlang",
+        "scopeName": "source.simonlang",
+        "path": "./syntaxes/simon.tmLanguage.json"
+      }
+    ]
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "@types/vscode": "^1.90.0",
+    "sinon": "^21.0.0"
+  }
+}

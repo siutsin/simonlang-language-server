@@ -1,0 +1,34 @@
+{
+  "name": "simonlang",
+  "scopeName": "source.simonlang",
+  "patterns": [
+    {
+      "include": "#keywords"
+    },
+    {
+      "include": "#strings"
+    }
+  ],
+  "repository": {
+    "keywords": {
+      "patterns": [
+        {
+          "match": "\\b(if|else|while|for)\\b",
+          "name": "keyword.control.simonlang"
+        }
+      ]
+    },
+    "strings": {
+      "patterns": [
+        {
+          "match": "'[^']*'",
+          "name": "string.quoted.single.simonlang"
+        },
+        {
+          "match": "\"[^\"]*\"",
+          "name": "string.quoted.double.simonlang"
+        }
+      ]
+    }
+  }
+}
