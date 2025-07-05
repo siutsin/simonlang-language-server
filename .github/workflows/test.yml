@@ -1,0 +1,35 @@
+name: Run Tests
+
+on:
+  pull_request:
+    branches: [ master ]
+  push:
+    branches: [ master ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Use Node.js (latest LTS)
+      uses: actions/setup-node@v4
+      with:
+        node-version: 'lts/*'
+        cache: 'npm'
+
+    - name: Install dependencies
+      run: npm ci
+
+    - name: Run tests
+      run: npm test
+
+    - name: Check for syntax errors
+      run: |
+        # Check that lib.js can be imported without errors
+        node -e "import('./server/lib.js').then(() => console.log('lib.js imports successfully')).catch(e => { console.error('lib.js import failed:', e.message); process.exit(1); })"
+
+        # Check that server.js can be parsed (syntax check only)
+        node -c server/server.js && echo "server.js syntax is valid"

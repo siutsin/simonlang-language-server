@@ -1,0 +1,14 @@
+{
+  "name": "simonlang-client",
+  "version": "1.0.0",
+  "description": "VSCode client for simonlang extension",
+  "type": "module",
+  "main": "extension.js",
+  "scripts": {},
+  "keywords": [],
+  "author": "Simon Li",
+  "license": "MIT",
+  "dependencies": {
+    "vscode-languageclient": "^9.0.0"
+  }
+}
